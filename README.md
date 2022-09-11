@@ -1,33 +1,20 @@
-###### tags: 'Github'
-
 # Particle Filter Algorithm
-## Particle Filter implementation in a simple 2D navigation domain
+## :mag_right: Project Description
+### Implement a simple robot navigation domain and to evaluate the performance of the particle filter algorithm.
+#### The green dot: the real position of the robot
+
+#### The yellow dots: the particles' position
+
+
 ![](https://i.imgur.com/69b1hJE.gif)
 
 
+## :earth_africa: Program Flow
 
-## Navigation domain
-Every time running the program, my program will randomly generate an environment with a given number of obstacles with random positon and orientation.
-
-E.g. environment (9m * 3m) with 20 obstacles:
-The red points are the centroid of the walls.
-
-![](https://i.imgur.com/rpcWBYc.png)
+![](https://i.imgur.com/dmPieiI.png)
 
 
-## Program Flow
-#### 1.	Generate particles
-#### 2.	Robot will move based on the motion model
-#### 3.	The particles will make the same movement as the robot
-#### 4.	The robot and the particles will detect surrounding obstacle by sensor model
-#### 5.	According to the sensing information, every particle will get a weight based on the correlation to the robot. With higher correlation, the particle weight will be higher.
-#### 6.	Based on the weights, I will resample the particles in the environment
-#### 7.	Repeat step. 1 ~ 7, to locate the real position of the robot
-
-
-
-
-## Weight function
+## :orange_book: Define Weight function
 
 ### Total weight = 100*distance weight + relative angle weight + relative orientation weight
 
@@ -53,21 +40,24 @@ However, although the particle can converge, I think the performance was not goo
 In my algorithm design, I consider the distance and the # walls being detected dominates the weight function, and in the end the performance improved.
 
 
-## Result
+## :star: Result
 ### Performance of the particle filter algorithm in the environment for 10, 20, and 40 obstacles:
 
 To show the performance of the particle filter for various number of obstacles, I apply 500 particles to the environment for 10, 20, and 40 obstacles.
 
 1. 10 obstacles:
 In the iterations, particle filter can correctly locate the position of the robot. However, in the beginning of the implementation, it is particularly hard for the particles to converge to the correct position of the robot, because the number of obstacle is too small that most of the time the sensor can’t sense any obstacle in every iteration. Because of the lacking of sensing information, the particle filter can’t work well in the environment with few obstacles.
+
 ![](https://i.imgur.com/p7jLMej.gif)
 
 2. 20 obstacles:
 In the iterations, particle filter can correctly locate the position of the robot. Moreover, it is easier for the particle filter to converge in the environment of 20 obstacles than in the environment with only 10 obstacles. I think it is because with more obstacles, the probability of sensing for particles and robot is higher.
+
 ![](https://i.imgur.com/9KBK71k.gif)
 
 3. 40 obstacles:
 Before implementing, I think that the performance in the environment of 40 obstacles will be as well as the condition of 20 obstacles. However, I figure that it is actually harder for particles to converge. Although the particles eventually can converge to the position of the robot, its speed of convergence is lower. I think the reason is that the obstacles locate densely. As the result, it is more possible to sense the assignment of the obstacles which seems similar to the robot sensing.
+
 ![](https://i.imgur.com/GiFXTiV.gif)
 
 
@@ -77,11 +67,13 @@ To clearly show the performance of the particle filter based on different number
 
 1. 100 particles:
 The speed of the converge will be slow, because the range of searching for the particles is smaller. Moreover, the particles are usually close to each others because the sample of the particles are small, so when resampling, the result will be dominate by some of the particles.
+
 ![](https://i.imgur.com/Sn6Haas.gif)
 
 
 2. 500 particles:
 With 100 particles, the range of searching becomes bigger, so the speed of convergence gets faster.
+
 ![](https://i.imgur.com/8CCtDy8.gif)
 
 
