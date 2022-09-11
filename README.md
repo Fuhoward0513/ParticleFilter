@@ -11,7 +11,8 @@
 
 ## :earth_africa: Program Flow
 
-![](https://i.imgur.com/dmPieiI.png)
+![](https://i.imgur.com/tSlPKUd.png)
+
 
 
 ## :orange_book: Define Weight function
